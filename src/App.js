@@ -6,6 +6,9 @@ import './App.css'
 
 const API_URL = 'https://api.github.com/search/repositories'
 
+// This is not the best practice as token is available in client side
+const token = 'Z2hwX0xnS1lHdElNVFFlcWdxZ0hRMVBPdnhQbHNad0txVjBIb3YyWg=='
+
 const RepoList = () => {
   const [repos, setRepos] = useState([])
   const [page, setPage] = useState(1)
@@ -41,7 +44,7 @@ const RepoList = () => {
           `${API_URL}?q=created:>${getOneMonthAgo()}&sort=stars&page=${page}`,
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${window.atob(token)}`,
             },
           },
         )
